@@ -1,0 +1,190 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+'Part 1
+class Employee {
+    - firstName: String
+    - lastName: String
+    - ssn: String
+    + Employee(firstName: String, lastName: String, ssn: String)
+    + getFirstName(): String
+    + getLastName(): String
+    + getSsn(): String
+    + setFirstName(firstName: String): void
+    + setLastName(lastName: String): void
+    + setSsn(ssn: String): void
+}
+class SalariedEmployee {
+    - weeklySalary: double
+    + SalariedEmployee(firstName: String, lastName: String, ssn: String, weeklySalary: double)
+    + getWeeklySalary(): double
+    + setWeeklySalary(weeklySalary: double): void
+    + toString(): String
+}
+SalariedEmployee --|> Employee
+class HourlyEmployee {
+    - wage: double
+    - hoursWorked: double
+    + HourlyEmployee(firstName: String, lastName: String, ssn: String, wage: double, hoursWorked: double)
+    + getWage(): double
+    + setWage(wage: double): void
+    + getHoursWorked(): double
+    + setHoursWorked(hoursWorked: double): void
+    + toString(): String
+}
+HourlyEmployee --|> Employee
+class CommissionEmployee {
+    - commissionRate: double
+    - grossSales: double
+    + CommissionEmployee(firstName: String, lastName: String, ssn: String, commissionRate: double, grossSales: double)
+    + getCommissionRate(): double
+    + setCommissionRate(commissionRate: double): void
+    + getGrossSales(): double
+    + setGrossSales(grossSales: double): void
+    + toString(): String
+}
+CommissionEmployee --|> Employee
+class BaseEmployee {
+    - baseSalary: double
+    + BaseEmployee(firstName: String, lastName: String, ssn: String, baseSalary: double)
+    + getBaseSalary(): double
+    + setBaseSalary(baseSalary: double): void
+    + toString(): String
+}
+BaseEmployee --|> Employee
+'Part 2
+class Ship {
+    - name: String
+    - yearBuilt: String
+    + Ship(name: String, yearBuilt: String)
+    + getName(): String
+    + setName(name: String): void
+    + getYearBuilt(): String
+    + setYearBuilt(yearBuilt: String): void
+    + print(): void
+}
+class CruiseShip {
+    - maxPassengers: int
+    + CruiseShip(name: String, yearBuilt: String, maxPassengers: int)
+    + getMaxPassengers(): int
+    + setMaxPassengers(maxPassengers: int): void
+    + print(): void
+}
+CruiseShip --|> Ship
+class CargoShip {
+    - tonnage: int
+    + CargoShip(name: String, yearBuilt: String, tonnage: int)
+    + getTonnage(): int
+    + setTonnage(tonnage: int): void
+    + print(): void
+}
+CargoShip --|> Ship
+'Part 3
+class Course {
+    - courseName: String
+    - instructor1: Instructor
+    - instructor2: Instructor
+    - textbook1: Textbook
+    - textbook2: Textbook
+    + Course(courseName: String, instructor1: Instructor, instructor2: Instructor, textbook1: Textbook, textbook2: Textbook)
+    + getCourseName(): String
+    + setCourseName(courseName: String): void
+    + getInstructor1(): Instructor
+    + getInstructor2(): Instructor
+    + setInstructor1(instructor1: Instructor): void
+    + setInstructor2(instructor2: Instructor): void
+    + getTextbook1(): Textbook
+    + getTextbook2(): Textbook
+    + setTextbook1(textbook1: Textbook): void
+    + setTextbook2(textbook2: Textbook): void
+    + print(): void
+}
+'Part 4
+class Folder {
+    - folderName: String
+    - files: List<File>
+    - subFolders: List<Folder>
+    + Folder(folderName: String)
+    + getFolderName(): String
+    + setFolderName(folderName: String): void
+    + addFile(file: File): void
+    + addSubFolder(folder: Folder): void
+    + removeSubFolder(folderName: String): void
+    + print(indent: String): void
+    + print(): void
+}
+class File {
+    - fileName: String
+    + File(fileName: String)
+    + getFileName(): String
+    + setFileName(fileName: String): void
+    + print(indent: String): void
+}
+'Object part 2
+object ship {
+    name = "Ocean Voyager"
+    yearBuilt = "1998"
+}
+object cruiseShip {
+    name = "Caribbean Dream"
+    yearBuilt = "2005"
+    maxPassengers = 2500
+}
+object cargoShip {
+    name = "Freight Master"
+    yearBuilt = "2010"
+    cargoCapacity = 10000
+}
+'Object part 3
+object instructor {
+    firstName = "Nima"
+    lastName = "Davarpanah"
+    ssn = "3-2636"
+}
+object textbook {
+    title = "Clean Code"
+    author = "Robert Martin"
+    publisher = "Prentice Hall"
+}
+'Object part 4
+object demo1 {
+    folderName = "demo1"
+}
+object sourceFiles {
+    folderName = "Source Files"
+}
+demo1 --> sourceFiles
+object includePath {
+    folderName = "Include Path"
+}
+demo1 --> includePath
+object remoteFiles {
+    fileName = "Remote Files"
+}
+demo1 --> remoteFiles
+object phalcon {
+    folderName = ".phalcon"
+}
+sourceFiles --> phalcon
+object cache {
+    folderName = "cache"
+}
+sourceFiles --> cache
+object publicFolder {
+    folderName = "public"
+}
+sourceFiles --> publicFolder
+object htaccess {
+    fileName = ".htaccess"
+}
+sourceFiles --> htaccess
+object htrouter {
+    fileName = ".htrouter.php"
+}
+sourceFiles --> htrouter
+object index {
+    fileName = "index.html"
+}
+sourceFiles --> index
+
+
+@enduml
